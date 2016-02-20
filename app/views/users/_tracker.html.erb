@@ -7,14 +7,14 @@
         <div class="content">
 			<div class="row">
 
-			   	<% tracker.fields.each do |item|%>
+			   	<% tracker.fields.each do |field|%>
 			   	<div class="col-md-4">
 			      <div class="field" >
-			      	<div class="field-title"><strong>Plan</strong></div>
+			      	<div class="field-title"><strong><%= field.title %></strong></div>
 			      	<ul>
-						<li class="entry"><%= (0...8).map { (65 + rand(26)).chr }.join %></li>
-						<li class="entry"><%= (0...8).map { (65 + rand(26)).chr }.join %></li>
-						<li class="entry"><%= (0...8).map { (65 + rand(26)).chr }.join %></li>
+			      		<% field.entries.each do |entry|%>
+							<li class="entry"><%= entry.task %></li>
+						<% end %>
 			      	<ul>
 			      </div>
 			     </div>

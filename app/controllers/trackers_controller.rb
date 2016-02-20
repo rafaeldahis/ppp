@@ -33,9 +33,23 @@ class TrackersController < ApplicationController
       if @tracker.save
         
         @fields = [Field.new(), Field.new(), Field.new()]
+        @fields[0].title = "Progress" 
+        @fields[1].title = "Plan"
+        @fields[2].title = "Problems"
+         
         @fields.each do |f|
           f.tracker_id = @tracker.id
           f.save
+
+          @entries = [Entry.new(), Entry.new(), Entry.new()]
+          @entries.each do |e|
+            e.field_id = f.id
+            e.task = (0...8).map { (65 + rand(26)).chr }.join 
+            e.save
+
+        end
+
+       
         end
 
         format.html { redirect_to @user, notice: 'Tracker was successfully created.' }
