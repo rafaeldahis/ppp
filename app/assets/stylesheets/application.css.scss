@@ -22,6 +22,9 @@ $yellow: #FFD852;
 $lightblue: #5CD4D6;
 $green: #17DD81;
 $gray: #444;
+
+
+
 body { 
 	padding: 0px;
 	margin: 0px;
@@ -35,25 +38,34 @@ body {
  background-color: $darkblue;
  padding-top: 20px;
  margin-bottom: 40px;
+ text-align: center;
+
 }
 .tracker-title{
 	font-size: 28px;	
 	font-weight: 600;
-	margin: 0 auto;
-	width: 40px;
+	transform: uppercase;
+	display: inline-block;
 }
 .tracker-container{
 	padding-bottom: 60px;
 	padding-top: 20px;
+}
+.tracker-new{
+	font-size: 42px;
+	font-weight: 600;
+	position: absolute;
+	top: 18px;
+	right: 18px;
 }
 .field{
 	min-height: 400px;
 	background-color: white;
 	padding: 30px 20px;
 	border-top: 6px solid $lightblue;
-	margin-right: 20px;
-
+	width: 98%;
 }
+
 .field-title{
 	font-size: 21px;
 	color: $gray;
@@ -83,3 +95,31 @@ body {
 	color: $gray;
 	vertical-align: middle;
 }
+.flash{
+	position: absolute;
+	top: 20;
+	width: 100%;
+	background-color: $lightblue;
+	text-align: center;
+	font-size: 18px; 
+	padding: 10px;
+	z-index: 9999;
+}
+
+@-webkit-keyframes seconds {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    left: -9999px;
+  }
+}
+.fade-in {
+	transition: seconds 1s;
+}
+.hidden {
+  opacity: 0;
+}
+
+

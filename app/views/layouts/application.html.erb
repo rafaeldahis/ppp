@@ -13,6 +13,10 @@
     <%= yield(:head) %>
   </head>
   <body>
+
+    <% flash.each do |key, value| %>
+      <%= content_tag :div, value, class: "flash #{key} fade-in" %>
+    <% end %>
   
   
     <div id="main" role="main">
@@ -24,5 +28,6 @@
         </div>
       </div> <!--! end of .container -->
     </div> <!--! end of #main -->
+
   </body>
 </html>

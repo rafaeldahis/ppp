@@ -24,12 +24,21 @@ class TrackersController < ApplicationController
   # POST /trackers
   # POST /trackers.json
   def create
-    @tracker = Tracker.new(tracker_params)
-    @user_id = User.find(tracker_params[:user_id]).id
+    @tracker = Tracker.new()
+    @tracker.period = params[:period]
+    @tracker.user_id = @current_user
+    @user = User.find(@current_user)
 
     respond_to do |format|
       if @tracker.save
-        format.html { redirect_to @tracker, notice: 'Tracker was successfully created.' }
+        
+        @fields = [Field.new(), Field.new(), Field.new()]
+        @fields.each do |f|
+          f.tracker_id = @tracker.id
+          f.save
+        end
+
+        format.html { redirect_to @user, notice: 'Tracker was successfully created.' }
         format.json { render :show, status: :created, location: @tracker }
       else
         format.html { render :new }
@@ -70,6 +79,6 @@ class TrackersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tracker_params
-      params.require(:tracker).permit(:period, :user_id)
+      params.require(:tracker).permit(:period)
     end
 end

@@ -1,21 +1,23 @@
 <div class="tracker-header">
   	<div class="tracker-title"><%= tracker.period %> </div>
+  	<div><%= link_to '+', trackers_path(:period => DateTime.parse(Time.now.to_s).strftime("%d/%m/%Y %H:%M")), :method => :post, class:'tracker-new' %></div>
   </div>
 
       <div class="container tracker-container">
         <div class="content">
 			<div class="row">
-			  
 
-			   	<% @trackers.each do |item|%>
-			      <div class="field col-md-4">
-			      	<div class="field-title"><strong>Plan</strong> This Week</div>
+			   	<% tracker.fields.each do |item|%>
+			   	<div class="col-md-4">
+			      <div class="field" >
+			      	<div class="field-title"><strong>Plan</strong></div>
 			      	<ul>
-						<li class="entry">Do this</li>
-						<li class="entry">Do that</li>
-						<li class="entry">And that</li>
+						<li class="entry"><%= (0...8).map { (65 + rand(26)).chr }.join %></li>
+						<li class="entry"><%= (0...8).map { (65 + rand(26)).chr }.join %></li>
+						<li class="entry"><%= (0...8).map { (65 + rand(26)).chr }.join %></li>
 			      	<ul>
 			      </div>
+			     </div>
 			     <% end %>
 			</div>
       </div>
