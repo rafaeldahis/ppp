@@ -25,6 +25,7 @@ class TrackersController < ApplicationController
   # POST /trackers.json
   def create
     @tracker = Tracker.new(tracker_params)
+    @user_id = User.find(tracker_params[:user_id]).id
 
     respond_to do |format|
       if @tracker.save
@@ -69,6 +70,6 @@ class TrackersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tracker_params
-      params.require(:tracker).permit(:period)
+      params.require(:tracker).permit(:period, :user_id)
     end
 end

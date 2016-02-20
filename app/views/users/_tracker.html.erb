@@ -1,0 +1,22 @@
+<div class="tracker-header">
+  	<div class="tracker-title"><%= tracker.period %> </div>
+  </div>
+
+      <div class="container tracker-container">
+        <div class="content">
+			<div class="row">
+			  
+
+			   	<% @trackers.each do |item|%>
+			      <div class="field col-md-4">
+			      	<div class="field-title"><strong>Plan</strong> This Week</div>
+			      	<ul>
+						<li class="entry">Do this</li>
+						<li class="entry">Do that</li>
+						<li class="entry">And that</li>
+			      	<ul>
+			      </div>
+			     <% end %>
+			</div>
+      </div>
+    </div>

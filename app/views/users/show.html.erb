@@ -1,19 +1,13 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
 
-<p>
-  <strong>Team:</strong>
-  <%= @user.team_id %>
-</p>
+<% @trackers.each do |tracker|%>
+   <%= render partial: "tracker", locals: {tracker: tracker} %>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+        <div class="user-box">
+   		<div class="user-initials"><%= @user.name[0] %><%= @user.lastname[0] %>
+   		</div>
+   	</div>
+
+<% end %>
+
