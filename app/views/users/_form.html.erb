@@ -13,18 +13,18 @@
 
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_area :name %>
+    <%= f.text_field :name %>
   </div>
 
   <div class="field">
     <%= f.label :lastname %><br>
-    <%= f.text_area :lastname %>
+    <%= f.text_field :lastname %>
   </div>
 
 
   <!-- <%= f.collection_select :team_id, Team.all, :id, :name %> --> 
-
+  <div class="breathe"></div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-md btn-primary"  %>
   </div>
 <% end %>
