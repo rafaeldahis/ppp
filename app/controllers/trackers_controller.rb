@@ -26,8 +26,8 @@ class TrackersController < ApplicationController
   def create
     @tracker = Tracker.new()
     @tracker.period = params[:period]
-    @tracker.user_id = @current_user
-    @user = User.find(@current_user)
+    @tracker.user_id = current_user.id
+    @user = User.find(current_user.id)
 
     respond_to do |format|
       if @tracker.save
@@ -96,7 +96,7 @@ class TrackersController < ApplicationController
 
     @tracker.destroy
 
-    @user = User.find(@current_user)
+    @user = User.find(current_user.id)
 
     respond_to do |format|
       format.html { redirect_to @user, notice: 'Tracker was successfully deleted.' }

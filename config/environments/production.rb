@@ -29,8 +29,7 @@ Rails.application.configure do
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = truey6hh45bv op0bg
-
+  config.assets.compile = true
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
   # yet still be able to expire them through the digest params.
   config.assets.digest = true
@@ -52,8 +51,7 @@ Rails.application.configure do
   # config.log_tags = [ :subdomain, :uuid ]
 
   # Use a different--re in production.
-  # config.cache_store = :mem_cache_storet6v -s
-ogger for distributed setups.
+  # config.cache_store = :mem_cache_storet6v -sogger for distributed setups.
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
 
   # Use a different cache stod

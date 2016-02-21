@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /users
   # GET /users.json
@@ -10,12 +11,17 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @trackers = Tracker.where(user_id: @user.id).order("created_at DESC")
+    @trackers = Tracker.where(user_id: current_user.id).order("created_at DESC")
+    @user = current_user
   end
 
   # GET /users/new
   def new
-    @user = User.new
+    if current_user
+      redirect_to current_user
+    else
+      @user = User.new(user_params)
+    end
   end
 
   # GET /users/1/edit
@@ -25,18 +31,16 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
-    @team = Team.find(user_params[:team_id])
-
-    @user.team_id = @team.id
+    current_user.name = user_params[:name]
+    current_user.lastname = user_params[:lastname]
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
+        format.html { redirect_to current_user, notice: 'User was successfully created.' }
+        format.json { render :show, status: :created, location: current_user }
       else
         format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.json { render json: current_user.errors, status: :unprocessable_entity }
       end
     end
   end
