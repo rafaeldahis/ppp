@@ -2,8 +2,10 @@
 
 <% if ! @trackers.any? %>
 <div class="tracker-header">
-  	<div><%= link_to 'Create your first Tracker', trackers_path(:period => DateTime.parse(Time.now.to_s).strftime("%d/%m/%Y %H:%M")), :method => :post, class:'tracker-title' %></div>
+  	<div class='tracker-title'>You don't have any trackers yet</div>
 </div>
+
+<div><%= link_to 'Create your first Tracker', trackers_path(:period => DateTime.parse(Time.now.to_s).strftime("%d/%m/%Y")), :method => :post, class:'tracker-title' %></div>
 
 <% else %>
 

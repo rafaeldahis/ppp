@@ -33,10 +33,19 @@ class TrackersController < ApplicationController
       if @tracker.save
         
         @fields = [Field.new(), Field.new(), Field.new()]
-        @fields[0].title = "Progress" 
-        @fields[1].title = "Plan"
-        @fields[2].title = "Problems"
-         
+
+        @lastfields = Field.all.order("id desc").limit(3).reverse
+
+        if not @lastfields.any? 
+          @fields[0].title = "Progress" 
+          @fields[1].title = "Plan"
+          @fields[2].title = "Problems"
+        else
+          @fields[0].title = @lastfields[0].title 
+          @fields[1].title = @lastfields[1].title
+          @fields[2].title = @lastfields[2].title
+        end
+
         @fields.each do |f|
           f.tracker_id = @tracker.id
           f.save
@@ -78,9 +87,19 @@ class TrackersController < ApplicationController
   # DELETE /trackers/1
   # DELETE /trackers/1.json
   def destroy
+    @tracker.fields.each do |f| 
+      f.entries.each do |e| 
+        e.destroy
+      end
+      f.destroy
+    end
+
     @tracker.destroy
+
+    @user = User.find(@current_user)
+
     respond_to do |format|
-      format.html { redirect_to trackers_url, notice: 'Tracker was successfully destroyed.' }
+      format.html { redirect_to @user, notice: 'Tracker was successfully deleted.' }
       format.json { head :no_content }
     end
   end

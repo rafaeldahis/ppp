@@ -26,7 +26,11 @@ ready = function() {
   	}, 1000);
 
   jQuery(".best_in_place").best_in_place();
-  
+
+  $('.tracker-plus').tooltip();
+  $('.tracker-minus').tooltip();
+
+
 };
 
 $(document).ready(ready);
