@@ -1,20 +1,22 @@
-
-
 <% if ! @trackers.any? %>
-<div class="tracker-header">
-  	<div class='tracker-title'>You don't have any trackers yet</div>
-</div>
 
-<div><%= link_to 'Create your first Tracker', trackers_path(:period => DateTime.parse(Time.now.to_s).strftime("%d/%m/%Y")), :method => :post, class:'tracker-title' %></div>
-
-<% else %>
-
-<% @trackers.each do |tracker|%>
-   <%= render partial: "tracker", locals: {tracker: tracker} %>
-    <div class="user-box">
-   		<div class="user-initials"><%= @user.name[0] %><%= @user.lastname[0] %></div>
+	<div class="tracker-header">
+	  	<div class='tracker-title'>You don't have any trackers yet</div>
 	</div>
 
+	<div class="container">
+		<%= button_to 'Create your first Tracker', trackers_path(:period => DateTime.parse(Time.now.to_s).strftime("%d/%m/%Y")), :method => :post, class:'btn btn-primary btn-lg center-block' %>
+	</div>
+
+
+<% else %>
+	<% @trackers.each do |tracker|%>
+	   <%= render partial: "tracker", locals: {tracker: tracker} %>
+	<% end %>
 <% end %>
 
-<% end %>
+
+<div class="user-box">
+	<div class="user-initials"><%= @user.name[0] %><%= @user.lastname[0] %></div>
+</div>
+

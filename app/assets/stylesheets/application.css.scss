@@ -25,7 +25,7 @@ $gray: #444;
 $lightgray: #E0ECF3;
 $mediumgray: #808C93;
 
-
+/* CORE */
 body { 
 	padding: 0px;
 	margin: 0px;
@@ -33,7 +33,20 @@ body {
 	color: white;
 	font-family: 'Source Sans Pro', sans-serif; 
 }
+.btn-primary{
+	background-color: $green;
+	border: 0px;
+	border-radius: 4px;
+	font-size: 21px;
+	font-weight: 200;
+}
+.btn-primary:hover{
+	opacity: 0.9;
+	background-color: $green;
+}
 
+
+/* TRACKER */ 
 .tracker-header{
  min-height: 60px;
  background-color: $darkblue;
@@ -72,7 +85,7 @@ a:hover{
 	background-color: transparent;
 }
 a:focus{text-decoration: none}
-.field{
+.field-box{
 	min-height: 400px;
 	background-color: white;
 	padding: 25px 20px;
@@ -133,7 +146,24 @@ a:focus{text-decoration: none}
   opacity: 0.8;
 }
 
+/* HOME */
+.first-row{padding: 25px;background-color: white;}
+.brand{
+	font-size: 28px;font-weight: 200;
+	color: $darkblue;
+}
+h1{font-size: 48px;font-weight: 600;}
+h2{font-size: 36px;font-weight: 600;}
 
+.subhero{
+font-size: 21px;
+line-height: 32px;
+font-weight: 200;
+font-family: "Source Sans Pro";margin-bottom: 40px;
+}
+section{padding: 60px 0px;min-height: 400px;}
+.benefits-section{background-color: $lightgray;color:$darkblue;}
+.third-section{min-height: 400px;background-color: $yellow;color:$darkblue;}
 
 
 
