@@ -9,10 +9,9 @@
 
 <% @trackers.each do |tracker|%>
    <%= render partial: "tracker", locals: {tracker: tracker} %>
-        <div class="user-box">
-   		<div class="user-initials"><%= @user.name[0] %><%= @user.lastname[0] %>
-   		</div>
-   	</div>
+    <div class="user-box">
+   		<div class="user-initials"><%= @user.name[0] %><%= @user.lastname[0] %></div>
+	</div>
 
 <% end %>
 

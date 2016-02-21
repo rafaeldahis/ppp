@@ -1,6 +1,6 @@
 <div class="tracker-header">
-  	<div class="tracker-title"><%= tracker.period %> </div>
-  	<div><%= link_to '+', trackers_path(:period => DateTime.parse(Time.now.to_s).strftime("%d/%m/%Y %H:%M")), :method => :post, class:'tracker-new' %></div>
+  	<div class="tracker-title"><%= best_in_place tracker, :period, :as => :input, :placeholder => tracker.period %> </div>
+  	<div><%= link_to '+', trackers_path(:period => DateTime.parse(Time.now.to_s).strftime("%d/%m/%Y")), :method => :post, class:'tracker-new' %></div>
   </div>
 
       <div class="container tracker-container">
@@ -13,7 +13,9 @@
 			      	<div class="field-title"><strong><%= field.title %></strong></div>
 			      	<ul>
 			      		<% field.entries.each do |entry|%>
-							<li class="entry"><%= entry.task %></li>
+						<li class="entry">
+							<%= best_in_place entry, :task, :as => :input, :placeholder => entry.task %>
+						</li>
 						<% end %>
 			      	<ul>
 			      </div>

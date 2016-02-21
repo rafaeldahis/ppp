@@ -25,6 +25,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'bootstrap-sass'
 
+gem 'best_in_place', '~> 3.0.1'
+
 
 
 # Use ActiveModel has_secure_password

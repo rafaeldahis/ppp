@@ -22,7 +22,8 @@ $yellow: #FFD852;
 $lightblue: #5CD4D6;
 $green: #17DD81;
 $gray: #444;
-
+$lightgray: #E0ECF3;
+$mediumgray: #808C93;
 
 
 body { 
@@ -39,7 +40,6 @@ body {
  padding-top: 20px;
  margin-bottom: 40px;
  text-align: center;
-
 }
 .tracker-title{
 	font-size: 28px;	
@@ -47,23 +47,38 @@ body {
 	transform: uppercase;
 	display: inline-block;
 }
+.tracker-title > .best_in_place input[type="text"]:focus{
+	padding: 0px;
+	line-height: 12px;
+	display: inline-block;
+	margin-top: -9px;
+}
+
 .tracker-container{
 	padding-bottom: 60px;
-	padding-top: 20px;
+	padding-top: 0px;
 }
-.tracker-new{
+a.tracker-new{
 	font-size: 42px;
 	font-weight: 600;
 	position: absolute;
 	top: 18px;
 	right: 18px;
+	color: $mediumgray;
 }
+a:hover{
+	color:$lightgray;
+	text-decoration: none;
+	background-color: transparent;
+}
+a:focus{text-decoration: none}
 .field{
 	min-height: 400px;
 	background-color: white;
 	padding: 30px 20px;
-	border-top: 6px solid $lightblue;
+	border-top: 6px solid $lightgray;
 	width: 98%;
+	border-radius: 5px;
 }
 
 .field-title{
@@ -74,7 +89,8 @@ body {
 .entry{
 	color: $gray;
 	font-size: 14px;
-	line-height: 2em;
+	line-height: 1.3em;
+	margin-bottom: 1em;
 }
 .user-box{
 	background-color: $yellow;
@@ -85,15 +101,16 @@ body {
 	position: absolute;
 	top: 10px;
 	left: 10px;
+	text-align: center;
+	border-radius: 5px;
 }
 .user-initials{
 	text-transform: uppercase;
-	font-size: 24px;
+	font-size: 21px;
 	font-weight: 400;
-	width: 32px;
-	margin: 0 auto;
 	color: $gray;
 	vertical-align: middle;
+	display: inline-block;
 }
 .flash{
 	position: absolute;
@@ -105,21 +122,17 @@ body {
 	padding: 10px;
 	z-index: 9999;
 }
+.best_in_place input[type="text"]:focus{
+  width: 75%;
+  border: none;
+  box-shadow: none;
+  border-bottom: solid 2px #c9c9c9;
+  transition: border 0.4s;
+  outline: none;
+  background-color: transparent;
+}
 
-@-webkit-keyframes seconds {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    left: -9999px;
-  }
-}
-.fade-in {
-	transition: seconds 1s;
-}
-.hidden {
-  opacity: 0;
-}
+
+
 
 

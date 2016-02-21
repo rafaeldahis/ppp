@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require best_in_place
 //= require jquery_ujs
 //= require bootstrap
 //= require turbolinks
@@ -21,9 +22,11 @@ var ready;
 ready = function() {
 
   setTimeout(function(){
-  	$('.flash').removeClass("fade-in");
-  	$('.flash').addClass("hidden");
+  	$('.flash').fadeOut();
   	}, 1000);
+
+  jQuery(".best_in_place").best_in_place();
+  
 };
 
 $(document).ready(ready);
