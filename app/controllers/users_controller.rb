@@ -17,8 +17,10 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    if current_user
+    if current_user and current_user.name 
       redirect_to current_user
+    elsif current_user and not current_user.name 
+      redirect_to edit_user_path(current_user)
     else
       @user = User.new(user_params)
     end

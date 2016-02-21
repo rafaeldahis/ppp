@@ -1,3 +1,16 @@
 <div class="first-row">
-	<div class="brand">Cadence.io</div>
+	<div class="brand pull-left">progress</div>
+	
+
+	<div class="login-cta pull-right">
+	
+	<% if user_signed_in? %>
+	  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+	 <% else %>
+	  <%= link_to('Login', new_user_session_path)  %>  
+	  
+	<% end %>
+
+	</div>
+
 </div>

@@ -15,12 +15,14 @@
     <%= f.label :name %><br>
     <%= f.text_area :name %>
   </div>
+
   <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_area :email %>
+    <%= f.label :lastname %><br>
+    <%= f.text_area :lastname %>
   </div>
 
-  <%= f.collection_select :team_id, Team.all, :id, :name %>
+
+  <!-- <%= f.collection_select :team_id, Team.all, :id, :name %> --> 
 
   <div class="actions">
     <%= f.submit %>

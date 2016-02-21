@@ -16,7 +16,8 @@
 <% end %>
 
 
-<div class="user-box">
+<div class="user-box"  rel="tooltip" title="<%= @user.name %> <%= @user.lastname %>" data-placement="bottom">
 	<div class="user-initials"><%= @user.name[0] %><%= @user.lastname[0] %></div>
 </div>
+
 

@@ -29,6 +29,7 @@ ready = function() {
 
   $('.tracker-plus').tooltip();
   $('.tracker-minus').tooltip();
+  $('.user-box').tooltip();
 
 
 };

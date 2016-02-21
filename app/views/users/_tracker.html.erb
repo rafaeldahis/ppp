@@ -3,7 +3,6 @@
   	<div class="pull-right">
 		<%= link_to '+', trackers_path(:period => DateTime.parse(Time.now.to_s).strftime("%d/%m/%Y")), :method => :post, class:'tracker-plus', :title => 'New Period', :rel => 'tooltip', "data-placement" => "bottom" %>
 		<%= link_to '-', tracker_path(:id => tracker.id), :method => :delete, class:'tracker-minus', :title => 'Delete', :rel => 'tooltip', "data-placement" => "bottom" %>
-  		
   		</div>
 	
   </div>

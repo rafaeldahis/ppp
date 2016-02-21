@@ -11,6 +11,17 @@ class ApplicationController < ActionController::Base
   	devise_parameter_sanitizer.for(:sign_up) << :username
   end
 
+  def after_sign_in_path_for(resource)
+    sign_in_url = new_user_session_url
+    if request.referer == sign_in_url
+      user_path(current_user)
+    else
+      stored_location_for(resource) || request.referer || root_path
+    end
+  end
+
+
+
   # def fill_dev_user
   #   return unless Rails.env.development?
   #   @current_user = 3
