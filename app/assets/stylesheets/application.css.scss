@@ -24,6 +24,7 @@ $green: #17DD81;
 $gray: #444;
 $lightgray: #E0ECF3;
 $mediumgray: #808C93;
+$darkgreen: #11A962;
 
 /* CORE */
 body { 
@@ -39,10 +40,12 @@ body {
 	border-radius: 4px;
 	font-size: 21px;
 	font-weight: 200;
+	border-bottom: 4px solid $darkgreen;
 }
 .btn-primary:hover{
 	opacity: 0.9;
 	background-color: $green;
+	border-bottom: 4px solid $darkgreen;	
 }
 
 
@@ -53,6 +56,7 @@ body {
  padding: 20px 10px 0px 10px;
  margin-bottom: 40px;
  text-align: center;
+ box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 .tracker-title{
 	font-size: 28px;	
@@ -149,6 +153,7 @@ a:focus{text-decoration: none}
 .first-row{
  	padding: 30px 15px 30px 15px;
 	background-color: white;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 .login-cta{
 	margin-top: -7px;
@@ -158,12 +163,15 @@ a:focus{text-decoration: none}
 	font-size: 15px;
 }
 .brand{
-	font-size: 28px;font-weight: 200;
+	font-size: 25px;font-weight: 200;
 	color: $darkblue;
-	margin-top: -10px;
+	margin-top: -11px;
+}
+.brand:hover{
+	color: $darkblue;
 }
 h1{font-size: 48px;font-weight: 600;}
-h2{font-size: 36px;font-weight: 600;}
+h2{font-size: 36px;font-weight: 600;margin-top: 40px;}
 h3{font-size: 28px; font-weight: 600;}
 h4{font-size: 21px; font-weight: 200; line-height: 28px;}
 .subhero{
@@ -178,8 +186,31 @@ section{padding: 60px 0px;min-height: 300px;}
 
 footer{
 	background-color: $gray;
-	vertical-align: middle;
 	padding-top: 20px;
+	min-height: 55px;
+}
+
+/* FORMS */
+label{
+	margin-top: 10px;
+	font-size: 18px;
+	font-weight: 200;
+}
+.field > input{
+	width: 80%;
+	color: $gray;
+	font-size: 18px;
 	min-height: 30px;
+	width: 75%;
+  border: none;
+  box-shadow: none;
+  border-bottom: solid 2px #c9c9c9;
+  transition: border 0.4s;
+  outline: none;
+  padding: 5px 10px;
+}
+
+a{
+	color: white;
 }
 
