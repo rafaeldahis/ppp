@@ -53,11 +53,10 @@ class TrackersController < ApplicationController
           @entries = [Entry.new(), Entry.new(), Entry.new()]
           @entries.each do |e|
             e.field_id = f.id
-            e.task = (0...8).map { (65 + rand(26)).chr }.join 
+            e.task = "Click here to edit goal"
             e.save
 
         end
-
        
         end
 
