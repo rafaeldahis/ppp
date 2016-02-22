@@ -11,8 +11,8 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @trackers = Tracker.where(user_id: current_user.id).order("created_at DESC")
-    @user = current_user
+    @trackers = Tracker.where(user_id: set_user.id).order("created_at DESC")
+    @user = set_user
   end
 
   # GET /users/new

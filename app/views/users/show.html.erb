@@ -1,23 +1,40 @@
-<% if ! @trackers.any? %>
+<% if @user != current_user && @user.team_id != current_user.team_id %>
 
 	<div class="tracker-header">
-	  	<div class='tracker-title'>You don't have any trackers yet</div>
-	</div>
-
-	<div class="container">
-		<%= button_to 'Create your first Tracker', trackers_path(:period => DateTime.parse(Time.now.to_s).strftime("%d/%m/%Y")), :method => :post, class:'btn btn-primary btn-lg center-block' %>
+		  	<div class='tracker-title'>You and this user are not part of the same team</div>
 	</div>
 
 
 <% else %>
-	<% @trackers.each do |tracker|%>
-	   <%= render partial: "tracker", locals: {tracker: tracker} %>
+
+
+	<% if ! @trackers.any? %>
+
+		<div class="tracker-header">
+		  	<% if @user = current_user %><div class='tracker-title'>You don't have any trackers yet</div>
+		  	<% else %><div class='tracker-title'>User don't have any trackers yet</div>
+		  	<% end %>
+		</div>
+
+		<div class="container">
+			<% if @user = current_user %> <%= button_to 'Create your first Tracker', trackers_path(:period => DateTime.parse(Time.now.to_s).strftime("%d/%m/%Y")), :method => :post, class:'btn btn-primary btn-lg center-block' %> 
+			<% end %>
+		</div>
+
+	<% else %>
+		<% @trackers.each do |tracker|%>
+		<div class="user-box pull-left"  rel="tooltip" title="<%= tracker.user.name %> <%= tracker.user.lastname %>" data-placement="bottom">
+			<div class="user-initials"><%= tracker.user.name[0] %><%= tracker.user.lastname[0] %></div>
+		</div>
+
+		   <%= render partial: "tracker", locals: {tracker: tracker} %>
+		<% end %>
 	<% end %>
+
+
 <% end %>
 
 
-<div class="user-box"  rel="tooltip" title="<%= @user.name %> <%= @user.lastname %>" data-placement="bottom">
-	<div class="user-initials"><%= @user.name[0] %><%= @user.lastname[0] %></div>
-</div>
+
 
 

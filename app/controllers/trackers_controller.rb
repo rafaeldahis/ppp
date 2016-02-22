@@ -57,6 +57,7 @@ class TrackersController < ApplicationController
             e.save
 
         end
+
        
         end
 
