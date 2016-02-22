@@ -1,3 +1,4 @@
+
 <% if @user != current_user && @user.team_id != current_user.team_id %>
 
 	<div class="tracker-header">
@@ -24,6 +25,8 @@
 	<% else %>
 
 		<% if @user == current_user && ! @user.team_id %><div class="top-prompt text-center">NOW, <%= link_to 'CREATE A TEAM', new_team_path, :method => :get %> SO THEY CAN SEE YOUR UPDATES!</div><% end %>
+
+		<% if @user == current_user && @user.team_id %><div class="top-prompt text-center">TIP: GO TO YOUR <%= link_to 'TEAM PAGE', team_path(@user.team_id), :method => :get %> TO SEE EVERYONE'S UPDATES.</div><% end %>
 
 		<% @trackers.each do |tracker|%>
 		<div class="user-box pull-left"  rel="tooltip" title="<%= tracker.user.name %> <%= tracker.user.lastname %>" data-placement="bottom">

@@ -1,3 +1,5 @@
+<%= render "layouts/header", locals: {team: @team} %>
+
 <% if ! @team.users.any? %>
 	<div class="tracker-header">
 	  	<div class='tracker-title'><span class="team-name"><%= @team.name %></span> doesn't have any users yet</div>
