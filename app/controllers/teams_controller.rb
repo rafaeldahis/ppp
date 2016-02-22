@@ -12,9 +12,9 @@ class TeamsController < ApplicationController
   def show    
     @trackers = []
     @team.users.each do |u|
-      @trackers.concat u.trackers
+      @trackers = @trackers + u.trackers
     end
-    @trackers.sort_by{|t| t[:created_date]}
+    @trackers.sort! {|x,y| y.created_at <=> x.created_at}
   end
 
   # GET /teams/new
