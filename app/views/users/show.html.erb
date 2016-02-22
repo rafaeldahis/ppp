@@ -11,17 +11,20 @@
 	<% if ! @trackers.any? %>
 
 		<div class="tracker-header">
-		  	<% if @user = current_user %><div class='tracker-title'>You don't have any trackers yet</div>
+		  	<% if @user == current_user %><div class='tracker-title'>You don't have any trackers yet</div>
 		  	<% else %><div class='tracker-title'>User don't have any trackers yet</div>
 		  	<% end %>
 		</div>
 
 		<div class="container">
-			<% if @user = current_user %> <%= button_to 'Create your first Tracker', trackers_path(:period => DateTime.parse(Time.now.to_s).strftime("%d/%m/%Y")), :method => :post, class:'btn btn-primary btn-lg center-block' %> 
+			<% if @user == current_user %> <%= button_to 'Create your first Tracker', trackers_path(:period => DateTime.parse(Time.now.to_s).strftime("%d/%m/%Y")), :method => :post, class:'btn btn-primary btn-lg center-block' %> 
 			<% end %>
 		</div>
 
 	<% else %>
+
+		<% if @user == current_user && ! @user.team_id %><div class="top-prompt text-center">NOW, <%= link_to 'CREATE A TEAM', new_team_path, :method => :get %> SO THEY CAN SEE YOUR UPDATES!</div><% end %>
+
 		<% @trackers.each do |tracker|%>
 		<div class="user-box pull-left"  rel="tooltip" title="<%= tracker.user.name %> <%= tracker.user.lastname %>" data-placement="bottom">
 			<div class="user-initials"><%= tracker.user.name[0] %><%= tracker.user.lastname[0] %></div>

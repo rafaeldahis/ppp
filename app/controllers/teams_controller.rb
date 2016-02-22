@@ -20,6 +20,7 @@ class TeamsController < ApplicationController
   # GET /teams/new
   def new
     @team = Team.new
+
   end
 
   # GET /teams/1/edit
@@ -33,6 +34,10 @@ class TeamsController < ApplicationController
 
     respond_to do |format|
       if @team.save
+
+        current_user.team_id = @team.id
+        current_user.save
+        
         format.html { redirect_to @team, notice: 'Team was successfully created.' }
         format.json { render :show, status: :created, location: @team }
       else
