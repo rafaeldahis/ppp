@@ -37,7 +37,7 @@ class TeamsController < ApplicationController
 
         current_user.team_id = @team.id
         current_user.save
-        
+
         format.html { redirect_to @team, notice: 'Team was successfully created.' }
         format.json { render :show, status: :created, location: @team }
       else
@@ -70,6 +70,7 @@ class TeamsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
