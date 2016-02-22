@@ -31,8 +31,5 @@ ready = function() {
   $('.tracker-minus').tooltip();
   $('.user-box').tooltip();
 
-
 };
 
-$(document).ready(ready);
-$(document).on('page:load', ready);

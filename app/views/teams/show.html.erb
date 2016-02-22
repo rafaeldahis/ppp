@@ -1,36 +1,47 @@
-<%= render "layouts/header", locals: {team: @team} %>
+<% if current_user.team_id != @team.id %>
 
-<% if ! @team.users.any? %>
+	
+
 	<div class="tracker-header">
-	  	<div class='tracker-title'><span class="team-name"><%= @team.name %></span> doesn't have any users yet</div>
+		  	<div class='tracker-title'>You are not part of this team</div>
 	</div>
-
-
 
 <% else %>
 
-	<% if @team.users.count == 1 %>
-		<div class="top-prompt text-center">YOUR TEAM IS STILL JUST YOU. <%= link_to 'INVITE', new_team_path, :method => :get %> MORE PEOPLE TO YOUR TEAM!</div>
-	<% end %> 
+<%= render "layouts/header", locals: {team: @team} %>
 
-	<% if ! @trackers.any? %>
+	<% if ! @team.users.any? %>
+		<div class="tracker-header">
+		  	<div class='tracker-title'><span class="team-name"><%= @team.name %></span> doesn't have any users yet</div>
+		</div>
 
-	<div class="tracker-header">
-	  	<div class='tracker-title'><span class="team-name"><%= @team.name %></span>  doesn't have any trackers yet</div>
-	</div>
-	
+
+
 	<% else %>
-	
-		<% @trackers.each do |tracker|%>
-			<div class="user-box pull-left"  rel="tooltip" title="<%= tracker.user.name %> <%= tracker.user.lastname %>" data-placement="bottom"><div class="user-initials"><%= tracker.user.name[0] %><%= tracker.user.lastname[0] %></div>
-			</div>
-		   	<%= render partial: "users/tracker", locals: {tracker: tracker} %>
-	   	<% end %>
-	
 
+		<% if @team.users.count == 1 %>
+			<div class="top-prompt text-center">YOUR TEAM IS STILL JUST YOU. <%= link_to 'INVITE', new_team_path, :method => :get %> MORE PEOPLE TO YOUR TEAM!</div>
+		<% end %> 
+
+		<% if ! @trackers.any? %>
+
+		<div class="tracker-header">
+		  	<div class='tracker-title'><span class="team-name"><%= @team.name %></span>  doesn't have any trackers yet</div>
+		</div>
+		
+		<% else %>
+		
+			<% @trackers.each do |tracker|%>
+				<div class="user-box pull-left"  rel="tooltip" title="<%= tracker.user.name %> <%= tracker.user.lastname %>" data-placement="bottom"><div class="user-initials"><%= tracker.user.name[0] %><%= tracker.user.lastname[0] %></div>
+				</div>
+			   	<%= render partial: "users/tracker", locals: {tracker: tracker} %>
+		   	<% end %>
+		
+
+		<% end %>
 	<% end %>
-<% end %>
 
+<% end %>
 
 
 

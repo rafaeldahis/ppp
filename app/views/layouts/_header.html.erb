@@ -1,5 +1,5 @@
 <div class="first-row">
-	<div class="brand pull-left"> <%= link_to('progress', "/") %><% if controller_name == "teams" %> | <strong><%= @team.name %></strong> <% end %> </div>
+	<div class="brand pull-left"> <%= link_to('progress', "/") %><% if controller_name == "teams" %> | <strong><span id="team_name_header"><%= @team.name %></span></strong> <% end %> </div>
 	
 
 	<div class="login-cta pull-right">
